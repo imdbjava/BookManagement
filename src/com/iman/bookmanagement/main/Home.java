@@ -2,8 +2,11 @@ package com.iman.bookmanagement.main;
 
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Book;
@@ -64,6 +67,13 @@ public class Home {
 			List<Publishment> publishments = publishmentService.findPublishmentsByAuthor(author.getEmailAddress());
 			for(Publishment publishment: publishments)
 			     out.println(publishment+ "\n");
+		}
+		
+		out.println("sort and output publishments by title : \n");
+		Stream<Publishment> pubs = publishmentService.getAllPublishmentsSortedByTitle();
+	     Iterator<Publishment> sourceIterator = pubs.iterator();
+		while(sourceIterator.hasNext()) {
+			out.println(sourceIterator.next()+ "\n");
 		}
 		
 		

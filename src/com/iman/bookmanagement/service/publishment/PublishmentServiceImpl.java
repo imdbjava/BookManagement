@@ -1,10 +1,13 @@
 package com.iman.bookmanagement.service.publishment;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -36,7 +39,7 @@ public class PublishmentServiceImpl implements PublishmentService {
 		return publishments;
 	}
 
-	public void addAllPublishments(List<Publishment> publishments) {
+	public void addAllPublishments(ArrayList<Publishment> publishments) {
 		if(publishments != null) {
 			for(Publishment publishment:publishments) {
 				addPublishment(publishment);
@@ -74,6 +77,15 @@ public class PublishmentServiceImpl implements PublishmentService {
 
 		
 	}
+
+	public Stream<Publishment> getAllPublishmentsSortedByTitle() {
+		Collection<Publishment> allPublishments=
+				publishments.values();
+		return  allPublishments.stream()
+		  .sorted((object1, object2) -> object1.getTitle().compareTo(object2.getTitle()));
+		
+	}
+
 
 	
 
