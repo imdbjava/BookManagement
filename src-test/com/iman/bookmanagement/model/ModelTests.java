@@ -31,10 +31,10 @@ public class ModelTests {
 		assertNotNull(autors);
 		assertEquals(autors.get(0), autor);
 		assertNotNull(autor);
-		assertNotNull(autor.getEMail());
-		assertEquals(autor.getEMail(), "iman@java.de");
-		assertNotNull(autor.getSureName());
-		assertNotNull(autor.getFamilyName());
+		assertNotNull(autor.getEmailadresse());
+		assertEquals(autor.getEmailadresse(), "iman@java.de");
+		assertNotNull(autor.getVorname());
+		assertNotNull(autor.getNachname());
 		// we also need some books and magazines. namely publishables
 		List<Publishment> publishments = new ArrayList<Publishment>();
 		String isbn = "1-56619-909-3";

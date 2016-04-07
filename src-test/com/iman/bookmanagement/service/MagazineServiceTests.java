@@ -26,7 +26,7 @@ public class MagazineServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEMail()));
+		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
 		List<Author> authors = new ArrayList<Author>();
 		authors.add(author);
 
@@ -51,7 +51,7 @@ public class MagazineServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEMail()));
+		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
 		List<Author> authors = new ArrayList<Author>();
 		authors.add(author);
 

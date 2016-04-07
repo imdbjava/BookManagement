@@ -20,7 +20,7 @@ import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
 import com.iman.bookmanagement.model.persons.Author;
-import com.iman.bookmanagement.model.persons.Person;
+import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Book;
 import com.iman.bookmanagement.model.publishable.Magazine;
 import com.iman.bookmanagement.model.publishable.Publishment;

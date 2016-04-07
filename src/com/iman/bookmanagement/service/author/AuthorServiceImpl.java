@@ -20,10 +20,10 @@ public class AuthorServiceImpl  implements AuthorService {
 		authors = new HashMap<String,Author>();
 	}
 	public void addAuthor(Author author) {
-		if(author != null && authors.containsKey(author.getEMail())) {
+		if(author != null && authors.containsKey(author.getEmailadresse())) {
 		    logger.error("Author is already added");
 		} else {
-			authors.put(author.getEMail(), author);
+			authors.put(author.getEmailadresse(), author);
 		}
 	}
 	public void addAllAuthors(List<Author> authors) {

@@ -8,7 +8,6 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import com.iman.bookmanagement.model.publishable.Book;
-import com.iman.bookmanagement.service.author.AuthorServiceImpl;
 
 public class BookServiceImpl implements BookService {
 	
