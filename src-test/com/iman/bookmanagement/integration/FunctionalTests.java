@@ -3,6 +3,8 @@ package com.iman.bookmanagement.integration;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+
 import com.iman.bookmanagement.repository.ServiceRepository;
 import com.iman.bookmanagement.service.Magazine.MagazineService;
 import com.iman.bookmanagement.service.author.AuthorService;
@@ -12,9 +14,14 @@ import com.iman.bookmanagement.service.publishment.PublishmentService;
 
 public class FunctionalTests {
 
+	@Before
+	public void intialize() {
+		ServiceRepository serviceRepository = new ServiceRepository();
+	}
+	
 	@Test
 	public void testLoadAuthorCSV() {
-		String csvFile = "/home/iman/Dropbox/Learn/BookManagement/data/autoren.csv";
+		String csvFile = "data/autoren.csv";
 		ServiceRepository serviceRepository = new ServiceRepository();
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
 		csvService.loadAutorCSV(csvFile);
@@ -27,7 +34,7 @@ public class FunctionalTests {
 		ServiceRepository serviceRepository = new ServiceRepository();
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
 
-		String csvBook = "/home/iman/Dropbox/Learn/BookManagement/data/buecher.csv";
+		String csvBook = "data/buecher.csv";
 		csvService.loadBookCSV(csvBook);
 		PublishmentService service  = ServiceRepository.getPushlishmentService();
 		assertNotNull(service.getAllPublishments());
@@ -39,7 +46,7 @@ public class FunctionalTests {
 		ServiceRepository serviceRepository = new ServiceRepository();
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
 
-		String csvMagazine = "/home/iman/Dropbox/Learn/BookManagement/data/zeitschriften.csv";
+		String csvMagazine = "data/zeitschriften.csv";
 		csvService.loadMagazineCSV(csvMagazine);
 		PublishmentService service  = ServiceRepository.getPushlishmentService();
 		assertNotNull(service.getAllPublishments());

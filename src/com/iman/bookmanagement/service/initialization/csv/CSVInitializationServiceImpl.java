@@ -20,10 +20,8 @@ import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Book;
 import com.iman.bookmanagement.model.publishable.Magazine;
 import com.iman.bookmanagement.repository.ServiceRepository;
-import com.iman.bookmanagement.service.Magazine.MagazineService;
 import com.iman.bookmanagement.service.author.AuthorService;
 import com.iman.bookmanagement.service.author.AuthorServiceImpl;
-import com.iman.bookmanagement.service.book.BookService;
 import com.iman.bookmanagement.service.publishment.PublishmentService;
 
 public class CSVInitializationServiceImpl implements CSVInitializationService {
@@ -32,8 +30,6 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 	private ICsvBeanReader csvReader;
 	private CsvPreference CSV_TYPE = CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE;
 	private AuthorService authorService;
-	private BookService bookService;
-	private MagazineService magazineService;
 	private PublishmentService publishmentService;
 	
 	public CSVInitializationServiceImpl(CsvPreference csvType) {
@@ -46,8 +42,6 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 		
 	public void initialize() {
 		authorService = ServiceRepository.getAuthorService();
-		magazineService = ServiceRepository.getMagazineService();
-		bookService = ServiceRepository.getBookService();
 		publishmentService = ServiceRepository.getPushlishmentService();
 
 	}

@@ -6,20 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 import com.iman.bookmanagement.model.persons.Author;
-import com.iman.bookmanagement.model.publishable.Book;
-import com.iman.bookmanagement.model.publishable.Magazine;
 import com.iman.bookmanagement.model.publishable.Publishment;
 import com.iman.bookmanagement.repository.ServiceRepository;
-import com.iman.bookmanagement.service.Magazine.MagazineService;
 import com.iman.bookmanagement.service.author.AuthorService;
-import com.iman.bookmanagement.service.book.BookService;
 import com.iman.bookmanagement.service.initialization.csv.CSVInitializationService;
-import com.iman.bookmanagement.service.initialization.csv.CSVInitializationServiceImpl;
 import com.iman.bookmanagement.service.publishment.PublishmentService;
-import com.iman.bookmanagement.service.publishment.PublishmentServiceImpl;
 
 public class Home {
 
@@ -28,9 +21,9 @@ public class Home {
 		// First we initialize the service repository
 		ServiceRepository serviceRepository = new ServiceRepository();
 		// defining files
-		String authorFile = "/home/iman/Dropbox/Learn/BookManagement/data/autoren.csv";
-		String bookFile = "/home/iman/Dropbox/Learn/BookManagement/data/buecher.csv";
-		String magazineFile = "/home/iman/Dropbox/Learn/BookManagement/data/zeitschriften.csv";
+		String authorFile =  "data/autoren.csv";
+		String bookFile =  "data/buecher.csv";
+		String magazineFile =  "data/zeitschriften.csv";
 	
 		PrintStream out = new PrintStream(System.out, true, "UTF-8");
 		
@@ -48,13 +41,13 @@ public class Home {
 		csvService.loadMagazineCSV(magazineFile);
 		
 		
-		out.println("\n\nprint all the books and magazines ");
+		out.println("\n\nprint all the books and magazines:\n ");
 		for(Entry<String,Publishment> entry :ServiceRepository.getPushlishmentService().getAllPublishments().entrySet()) {
 			out.println(entry.getValue());	
 			}
 		
-		
-		out.print("\n \nsearch for the book with ISBN 5554-5545-4518:\n");
+		//////
+		out.print("\n \n search for the book with ISBN 5554-5545-4518:\n");
 		String isbn = "5554-5545-4518";
 		out.println(publishmentService.getPublishment(isbn));
 		
@@ -69,6 +62,7 @@ public class Home {
 			     out.println(publishment+ "\n");
 		}
 		
+		///////////////////
 		out.println("sort and output publishments by title : \n");
 		Stream<Publishment> pubs = publishmentService.getAllPublishmentsSortedByTitle();
 	     Iterator<Publishment> sourceIterator = pubs.iterator();

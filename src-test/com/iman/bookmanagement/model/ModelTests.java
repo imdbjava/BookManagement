@@ -12,15 +12,21 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Book;
 import com.iman.bookmanagement.model.publishable.Magazine;
 import com.iman.bookmanagement.model.publishable.Publishment;
+import com.iman.bookmanagement.repository.ServiceRepository;
 
 public class ModelTests {
 
+	@Before
+	public void intialize() {
+		ServiceRepository serviceRepository = new ServiceRepository();
+	}
 	/** we want to write a test for converting csv to pojos.*/
 	@Test
 	public void createPojosTest() {
@@ -35,7 +41,6 @@ public class ModelTests {
 		assertNotNull(autor.getFamilyName());
 		assertNotNull(autor.getSureName());
 		// we also need some books and magazines. namely publishables
-		List<Publishment> publishments = new ArrayList<Publishment>();
 		String isbn = "1-56619-909-3";
 		// TODO check ISBN validation.
 		Book book= new Book("book title","email3@test.de",isbn,"short desc");

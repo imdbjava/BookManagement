@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
@@ -24,6 +25,7 @@ import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Book;
 import com.iman.bookmanagement.model.publishable.Magazine;
 import com.iman.bookmanagement.model.publishable.Publishment;
+import com.iman.bookmanagement.repository.ServiceRepository;
 /**
  * Unit Tests for SuperCSV.
  * @author iman
@@ -31,13 +33,17 @@ import com.iman.bookmanagement.model.publishable.Publishment;
  */
 public class SuperCSVReaderTests {
 
+	@Before
+	public void intialize() {
+		ServiceRepository serviceRepository = new ServiceRepository();
+	}
 	/**
 	 * Let's test if SuperCSV is included in the project and is able to read a csv file.
 	 */
 	@Test
 	public void loadAFileTest() {
         
-		String csvFile = "/home/iman/Dropbox/Learn/BookManagement/data/autoren.csv";
+		String csvFile = "data/autoren.csv";
 	    ICsvBeanReader csvReader;
 		try {
 			csvReader = new CsvBeanReader(new FileReader(csvFile),
