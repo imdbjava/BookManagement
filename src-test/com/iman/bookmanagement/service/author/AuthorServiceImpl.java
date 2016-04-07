@@ -41,8 +41,8 @@ public class AuthorServiceImpl  implements AuthorService {
 		}
 	}
 	
-	public List<Author> getAllAuthors() {
-		return null;
+	public Map<String,Author> getAllAuthors() {
+	  return authors;
 		
 	}
 
