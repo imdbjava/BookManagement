@@ -22,9 +22,10 @@ Map<String,Book> books;
 	
 	public void addBook(Book book) {
 		if(book!= null && ! books.containsKey(book.getIsbn())) {
-			logger.error("Book already exists or the parameter was null");
-		} else {
 			books.put(book.getIsbn(), book);
+		} else {
+			logger.error("Book already exists or the parameter was null");
+
 		}
 		
 	}

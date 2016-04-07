@@ -1,9 +1,7 @@
 package com.iman.bookmanagement.model.publishable;
 
 import java.util.Date;
-import java.util.List;
 
-import com.iman.bookmanagement.model.persons.Author;
 /**
  * Magazine Pojo
  * @author iman
@@ -11,20 +9,44 @@ import com.iman.bookmanagement.model.persons.Author;
  */
 public class Magazine extends Publishment {
 
-	
-	private Date publishDate;
+	public Magazine() {
+		
+	}
+	private String publishDate;
 
-	public Magazine(String title, List<Author> autors, String isbn, Date publishDate) {
+	public Magazine(String title, String autors, String isbn, String publishDate) {
 		super(title, autors, isbn);
 		this.setPublishDate(publishDate);
 	}
 
-	public Date getPublishDate() {
+	public String getPublishDate() {
 		return publishDate;
 	}
 
-	public void setPublishDate(Date publishDate) {
+	public void setPublishDate(String publishDate) {
 		this.publishDate = publishDate;
 	}
+	public void  setTitle(String title) {
+		super.setTitle(title);
+	}
+	
+	public String getTitle() {
+		return super.getTitle();
+	}
+
+	public void setISBN(String isbn) {
+		super.setIsbn(isbn);
+	}
+	public String getISBN() {
+		return super.getIsbn();
+	}
+	public void setAutors(String authors) {
+		super.setAutors(authors);
+	}
+	public String getAutors() {
+		return super.getAutors();
+	}
+	
+
 
 }

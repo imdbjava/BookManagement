@@ -7,9 +7,7 @@ import java.util.Map;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
-import com.iman.bookmanagement.model.publishable.Book;
 import com.iman.bookmanagement.model.publishable.Magazine;
-import com.iman.bookmanagement.service.book.BookServiceImpl;
 
 public class MagazineServiceImpl implements MagazineService {
 

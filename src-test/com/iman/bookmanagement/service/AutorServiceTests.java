@@ -18,7 +18,7 @@ public class AutorServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
+		assertNotNull(autorService.getAuthor(author.getEmailAddress()));
 	}
 	@Test
 	public void addAllAndGetAllAutorsTest(){
@@ -32,7 +32,7 @@ public class AutorServiceTests {
 		assertNotNull(autorService.getAllAuthors());
 
 		for(Author author:authors) {
-			assertNotNull(autorService.getAuthor(author.getEmailadresse()));
+			assertNotNull(autorService.getAuthor(author.getEmailAddress()));
 		}
 	}
 

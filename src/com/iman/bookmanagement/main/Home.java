@@ -7,9 +7,15 @@ import com.iman.bookmanagement.service.initialization.csv.CSVInitializationServi
 public class Home {
 
 	public static void main(String[] args) {
-		String csvFile = "/home/iman/Dropbox/Learn/BookManagement/data/autoren.csv";
+		// First we initialize the service repository
 		ServiceRepository serviceRepository = new ServiceRepository();
+
+		// load all the authors.
+		String csvFile = "/home/iman/Dropbox/Learn/BookManagement/data/autoren.csv";
 		CSVInitializationService csvService = new CSVInitializationServiceImpl();
 		csvService.loadAutorCSV(csvFile);
+		
+		// load all the books
+		
 	}
 }

@@ -52,7 +52,7 @@ public class CSVInitServiceTests {
 			Author author = null;
 	        while ((author = csvReader.read(Author.class, header, processors)) != null) {
 	        	authorService.addAuthor(author);
-				assertNotNull(authorService.getAuthor(author.getEmailadresse()));
+				assertNotNull(authorService.getAuthor(author.getEmailAddress()));
 	        }
 			
 		} catch (FileNotFoundException e) {

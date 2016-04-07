@@ -12,15 +12,18 @@ import com.iman.bookmanagement.model.persons.Author;
  */
 public class Publishment {
 
-	public Publishment(String title, List<Author> autors, String isbn) {
+	public Publishment() {
+		
+	}
+	public Publishment(String title, String autors, String isbn) {
 		this.title = title;
-		this.autors = autors;
+		this.authors = autors;
 		this.isbn = isbn;
 	}
 
 
 	private String title;
-	private List<Author> autors;
+	private String authors;
 	private String isbn;
 	
 	
@@ -34,13 +37,13 @@ public class Publishment {
 	}
 
 
-	public List<Author> getAutors() {
-		return autors;
+	public String getAutors() {
+		return authors;
 	}
 
 
-	public void setAutors(List<Author> autors) {
-		this.autors = autors;
+	public void setAutors(String autors) {
+		this.authors = autors;
 	}
 
 

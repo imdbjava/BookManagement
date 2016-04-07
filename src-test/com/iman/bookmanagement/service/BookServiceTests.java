@@ -23,14 +23,14 @@ public class BookServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
+		assertNotNull(autorService.getAuthor(author.getEmailAddress()));
 		List<Author> authors = new ArrayList<Author>();
 		authors.add(author);
 
 		BookService bookService = new BookServiceImpl();
 		String isbn = "1-56619-909-3";
 		// TODO check ISBN validation.
-		Book book= new Book("book title",authors,isbn,"short desc");
+		Book book= new Book("book title","test@email.de",isbn,"short desc");
 		bookService.addBook(book);
 		assertNotNull(bookService.getBook(isbn));
 	}
@@ -39,7 +39,7 @@ public class BookServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
+		assertNotNull(autorService.getAuthor(author.getEmailAddress()));
 		List<Author> authors = new ArrayList<Author>();
 		authors.add(author);
 
@@ -48,8 +48,8 @@ public class BookServiceTests {
 		String isbn2 = "2-56619-909-4";
 		
 		// TODO check ISBN validation.
-		Book book1= new Book("book title1",authors,isbn1,"short desc 1");
-		Book book2= new Book("book title2",authors,isbn2,"short desc 2");
+		Book book1= new Book("book title1","test1@email.de",isbn1,"short desc 1");
+		Book book2= new Book("book title2","test2@email.de",isbn2,"short desc 2");
 		List<Book> books= new ArrayList<Book>();
 		books.add(book1);
 		books.add(book2);

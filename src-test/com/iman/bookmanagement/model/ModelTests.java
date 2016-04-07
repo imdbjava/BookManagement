@@ -31,31 +31,22 @@ public class ModelTests {
 		assertNotNull(autors);
 		assertEquals(autors.get(0), autor);
 		assertNotNull(autor);
-		assertNotNull(autor.getEmailadresse());
-		assertEquals(autor.getEmailadresse(), "iman@java.de");
-		assertNotNull(autor.getVorname());
-		assertNotNull(autor.getNachname());
+		assertEquals(autor.getEmailAddress(), "iman@java.de");
+		assertNotNull(autor.getFamilyName());
+		assertNotNull(autor.getSureName());
 		// we also need some books and magazines. namely publishables
 		List<Publishment> publishments = new ArrayList<Publishment>();
 		String isbn = "1-56619-909-3";
 		// TODO check ISBN validation.
-		Book book= new Book("book title",autors,isbn,"short desc");
+		Book book= new Book("book title","email3@test.de",isbn,"short desc");
 		assertNotNull(book.getShortDescription());
 		assertNotNull(book.getIsbn());
 		assertNotNull(book.getTitle());
 		assertNotNull(book.getAutors());
 		
-		String string = "2015-10-10";
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY);
-		Date date = null;
-		try {
-			date = format.parse(string);
-		} catch (ParseException e) {
-			fail("Date format Parse Exceptoin"+ e);
-		}
-	    assertNotNull(date); 
+		String date = "2015-10-10";
 		
-		Magazine magazine = new Magazine("magazine title",autors,isbn, date);
+		Magazine magazine = new Magazine("magazine title","mag@test.de",isbn, date);
 		assertNotNull(magazine.getAutors());
 		assertNotNull(magazine.getTitle());
 		assertNotNull(magazine.getIsbn());

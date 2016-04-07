@@ -26,7 +26,7 @@ public class MagazineServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
+		assertNotNull(autorService.getAuthor(author.getEmailAddress()));
 		List<Author> authors = new ArrayList<Author>();
 		authors.add(author);
 
@@ -34,15 +34,7 @@ public class MagazineServiceTests {
 		String isbn = "1-56619-902-4";
 		// TODO check ISBN validation.
 		String dateString = "10.10.2016";
-		DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
-		Date date = null;
-		try {
-			date = format.parse(dateString);
-		} catch (ParseException e) {
-			fail("Date format Parse Exceptoin"+ e);
-		}
-	    assertNotNull(date); 
-		Magazine magazine= new Magazine("magazine title",authors,isbn,date);
+		Magazine magazine= new Magazine("magazine title","email@test.de",isbn,dateString);
 		magazineService.addMagazine(magazine);
 		assertNotNull(magazineService.getMagazine(isbn));
 	}
@@ -51,7 +43,7 @@ public class MagazineServiceTests {
 		AuthorService autorService = new AuthorServiceImpl();
 		Author author = new Author("iman@java.de","Iman","Db");
 		autorService.addAuthor(author);
-		assertNotNull(autorService.getAuthor(author.getEmailadresse()));
+		assertNotNull(autorService.getAuthor(author.getEmailAddress()));
 		List<Author> authors = new ArrayList<Author>();
 		authors.add(author);
 
@@ -64,16 +56,8 @@ public class MagazineServiceTests {
 		String isbn2 = "1-56619-902-56";
 		// TODO check ISBN validation.
 		String dateString = "10.10.2016";
-		DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
-		Date date = null;
-		try {
-			date = format.parse(dateString);
-		} catch (ParseException e) {
-			fail("Date format Parse Exceptoin"+ e);
-		}
-	    assertNotNull(date); 
-		Magazine magazine1= new Magazine("magazine title1",authors,isbn1,date);
-		Magazine magazine2= new Magazine("magazine title2",authors,isbn2,date);
+		Magazine magazine1= new Magazine("magazine title1","email1@test.de",isbn1,dateString);
+		Magazine magazine2= new Magazine("magazine title2","email2@test.de",isbn2,dateString);
 
 	
 		magazines.add(magazine1);

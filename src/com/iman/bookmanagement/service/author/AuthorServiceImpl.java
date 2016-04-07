@@ -1,5 +1,6 @@
 package com.iman.bookmanagement.service.author;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +21,10 @@ public class AuthorServiceImpl  implements AuthorService {
 		authors = new HashMap<String,Author>();
 	}
 	public void addAuthor(Author author) {
-		if(author != null && authors.containsKey(author.getEmailadresse())) {
+		if(author != null && authors.containsKey(author.getEmailAddress())) {
 		    logger.error("Author is already added");
 		} else {
-			authors.put(author.getEmailadresse(), author);
+			authors.put(author.getEmailAddress(), author);
 		}
 	}
 	public void addAllAuthors(List<Author> authors) {
@@ -49,8 +50,8 @@ public class AuthorServiceImpl  implements AuthorService {
 	}
 	
 	public Map<String,Author> getAllAuthors() {
-	  return authors;
-		
+	  return authors;	
 	}
+	
 
 }
