@@ -1,4 +1,4 @@
-package helpers.publishment;
+package com.iman.bookmanagement.service.publishment;
 
 /**
  * Adapted from http://www.java-forum.org.

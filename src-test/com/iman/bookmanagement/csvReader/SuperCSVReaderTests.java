@@ -1,4 +1,4 @@
-package csvReader;
+package com.iman.bookmanagement.csvReader;
 
 import static org.junit.Assert.*;
 
@@ -19,11 +19,11 @@ import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
-import persons.Autor;
-import persons.Person;
-import publishable.Book;
-import publishable.Magazine;
-import publishable.Publishment;
+import com.iman.bookmanagement.model.persons.Author;
+import com.iman.bookmanagement.model.persons.Person;
+import com.iman.bookmanagement.model.publishable.Book;
+import com.iman.bookmanagement.model.publishable.Magazine;
+import com.iman.bookmanagement.model.publishable.Publishment;
 /**
  * Unit Tests for SuperCSV.
  * @author iman

@@ -1,8 +1,8 @@
-package publishable;
+package com.iman.bookmanagement.model.publishable;
 
 import java.util.List;
 
-import persons.Autor;
+import com.iman.bookmanagement.model.persons.Author;
 
 /**
  * Book Pojo
@@ -14,7 +14,7 @@ public class Book extends Publishment {
 	
 	private String shortDescription;
 
-	public Book(String title, List<Autor> autors, String isbn, String shortDesc) {
+	public Book(String title, List<Author> autors, String isbn, String shortDesc) {
 		super(title, autors, isbn);
 		this.setShortDescription(shortDesc);
 	}

@@ -1,4 +1,4 @@
-package persons;
+package com.iman.bookmanagement.model.persons;
 
 /** abstract class person. At the moment we only have one
  * type of person, namely Autor. This class can be useful for 

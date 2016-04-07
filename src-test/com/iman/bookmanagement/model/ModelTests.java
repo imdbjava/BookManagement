@@ -1,4 +1,4 @@
-package pojos;
+package com.iman.bookmanagement.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -14,19 +14,19 @@ import java.util.Locale;
 
 import org.junit.Test;
 
-import persons.Autor;
-import publishable.Book;
-import publishable.Magazine;
-import publishable.Publishment;
+import com.iman.bookmanagement.model.persons.Author;
+import com.iman.bookmanagement.model.publishable.Book;
+import com.iman.bookmanagement.model.publishable.Magazine;
+import com.iman.bookmanagement.model.publishable.Publishment;
 
-public class PojosTests {
+public class ModelTests {
 
 	/** we want to write a test for converting csv to pojos.*/
 	@Test
 	public void createPojosTest() {
 		// we need a list autors to be filled
-		List<Autor> autors = new ArrayList<Autor>(); 
-		Autor autor = new Autor("iman@java.de","Iman","Db");
+		List<Author> autors = new ArrayList<Author>(); 
+		Author autor = new Author("iman@java.de","Iman","Db");
 		autors.add(autor);
 		assertNotNull(autors);
 		assertEquals(autors.get(0), autor);
