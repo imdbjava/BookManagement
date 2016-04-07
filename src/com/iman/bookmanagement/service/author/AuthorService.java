@@ -12,7 +12,5 @@ public interface AuthorService extends Service {
     void addAllAuthors(List<Author> authors) ;
 	Author getAuthor(String Email);
 	Map<String,Author> getAllAuthors() ;
-		
-
 
 }

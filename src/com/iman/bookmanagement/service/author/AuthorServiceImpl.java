@@ -20,25 +20,32 @@ public class AuthorServiceImpl  implements AuthorService {
 		authors = new HashMap<String,Author>();
 	}
 	public void addAuthor(Author author) {
-		if(authors.containsKey(author.getEMail())) {
+		if(author != null && authors.containsKey(author.getEMail())) {
 		    logger.error("Author is already added");
 		} else {
 			authors.put(author.getEMail(), author);
 		}
 	}
 	public void addAllAuthors(List<Author> authors) {
-		for(Author author:authors) {
+		if(authors != null) {
+		  for(Author author:authors) {
 			addAuthor(author);
+		  }
 		}
 	}
 
 	public Author getAuthor(String Email) {	
-		if(authors.containsKey(Email)) {
-		return authors.get(Email);
-		} else {
-		    logger.error("Author is not found.");
-		    return null;
+		if(Email != null && Email.trim()!= ""){
+			if(authors.containsKey(Email)) {
+				return authors.get(Email);
+				} else {
+				    logger.error("Author not found.");
+				    return null;
+				}
 		}
+	    logger.error("Author not found, Email Argument was null.");
+		return null;
+		
 	}
 	
 	public Map<String,Author> getAllAuthors() {
