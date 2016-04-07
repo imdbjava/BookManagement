@@ -8,15 +8,19 @@ import com.iman.bookmanagement.service.book.BookService;
 import com.iman.bookmanagement.service.book.BookServiceImpl;
 import com.iman.bookmanagement.service.initialization.csv.CSVInitializationService;
 import com.iman.bookmanagement.service.initialization.csv.CSVInitializationServiceImpl;
+import com.iman.bookmanagement.service.publishment.PublishmentService;
+import com.iman.bookmanagement.service.publishment.PublishmentServiceImpl;
 
 public class ServiceRepository {
 
-	public static AuthorService authorService;
-	public static BookService bookService;
-	public static MagazineService magazineService;
-	public static CSVInitializationService csvInitializationService;
+	private static AuthorService authorService;
+	private static BookService bookService;
+	private static MagazineService magazineService;
+	private static CSVInitializationService csvInitializationService;
+	private static PublishmentService publishmentService;
 	
 	public ServiceRepository() {
+		publishmentService = new PublishmentServiceImpl();
 		authorService = new AuthorServiceImpl();
 		bookService = new BookServiceImpl();
 		magazineService = new MagazineServiceImpl();
@@ -37,6 +41,10 @@ public class ServiceRepository {
 
 	public static MagazineService getMagazineService() {
 		return magazineService;
+	}
+
+	public static PublishmentService getPushlishmentService() {
+		return publishmentService;
 	}
 	
 

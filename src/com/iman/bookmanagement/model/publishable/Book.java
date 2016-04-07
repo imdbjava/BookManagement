@@ -47,6 +47,11 @@ public class Book extends Publishment {
 	public String getAutors() {
 		return super.getAutors();
 	}
+	@Override
+	public String toString() {
+		return "Book [ShortDescription=" + getShortDescription() + ", Title=" + getTitle() + ", ISBN="
+				+ getISBN() + ", Autors=" + getAutors() + "]";
+	}
 	
 	
 

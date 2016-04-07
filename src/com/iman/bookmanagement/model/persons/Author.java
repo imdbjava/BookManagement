@@ -42,5 +42,11 @@ public class Author {
 		this.familyName = familyName;
 	}
 
+	@Override
+	public String toString() {
+		return "Author [emailAddress=" + emailAddress + ", sureName=" + sureName + ", familyName=" + familyName + "]";
+	}
+
+	
 
 }

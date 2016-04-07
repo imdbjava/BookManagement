@@ -13,7 +13,7 @@ public class BookServiceImpl implements BookService {
 	
 	private static Logger logger = Logger.getLogger(BookServiceImpl.class);
 
-Map<String,Book> books;
+     Map<String,Book> books;
 	
 	public BookServiceImpl() {
 		books = new HashMap<String, Book>();

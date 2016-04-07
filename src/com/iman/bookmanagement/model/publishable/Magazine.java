@@ -19,6 +19,12 @@ public class Magazine extends Publishment {
 		this.setPublishDate(publishDate);
 	}
 
+	@Override
+	public String toString() {
+		return "Magazine [PublishDate=" + getPublishDate() + ", Title=" + getTitle() + ", ISBN="
+				+ getISBN() + ", Autors=" + getAutors() + "]";
+	}
+
 	public String getPublishDate() {
 		return publishDate;
 	}

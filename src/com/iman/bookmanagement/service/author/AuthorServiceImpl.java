@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
 import com.iman.bookmanagement.model.persons.Author;
+import com.iman.bookmanagement.model.publishable.Publishment;
+import com.iman.bookmanagement.repository.ServiceRepository;
 
 public class AuthorServiceImpl  implements AuthorService {
 
@@ -51,6 +54,23 @@ public class AuthorServiceImpl  implements AuthorService {
 	
 	public Map<String,Author> getAllAuthors() {
 	  return authors;	
+	}
+	public List<Author> findAuthorByNameAndFamilyName(String surename, String FamilyName) {
+		List<Author> foundedAuthors = new ArrayList<Author>();
+		for(Entry<String,Author> entry :authors.entrySet()) {
+			if(entry.getValue().getFamilyName().equals(FamilyName)
+					&& entry.getValue().getSureName().equals(surename))
+				foundedAuthors.add((Author)entry.getValue());
+		}
+		return foundedAuthors;
+	}
+	public List<Author> findAuthorByFamilyName(String FamilyName) {
+		List<Author> foundedAuthors = new ArrayList<Author>();
+		for(Entry<String,Author> entry :authors.entrySet()) {
+			if(entry.getValue().getFamilyName().equals(FamilyName))
+				foundedAuthors.add((Author)entry.getValue());
+		}
+		return foundedAuthors;
 	}
 	
 

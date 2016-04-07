@@ -8,6 +8,7 @@ import com.iman.bookmanagement.service.Magazine.MagazineService;
 import com.iman.bookmanagement.service.author.AuthorService;
 import com.iman.bookmanagement.service.book.BookService;
 import com.iman.bookmanagement.service.initialization.csv.CSVInitializationService;
+import com.iman.bookmanagement.service.publishment.PublishmentService;
 
 public class FunctionalTests {
 
@@ -28,9 +29,9 @@ public class FunctionalTests {
 
 		String csvBook = "/home/iman/Dropbox/Learn/BookManagement/data/buecher.csv";
 		csvService.loadBookCSV(csvBook);
-		BookService bookService  = ServiceRepository.getBookService();
-		assertNotNull(bookService.getAllBooks());
-		assertEquals(bookService.getAllBooks().keySet().size(), 8);
+		PublishmentService service  = ServiceRepository.getPushlishmentService();
+		assertNotNull(service.getAllPublishments());
+		assertEquals(service.getAllPublishments().keySet().size(), 8);
 	}
 	
 	@Test
@@ -40,9 +41,11 @@ public class FunctionalTests {
 
 		String csvMagazine = "/home/iman/Dropbox/Learn/BookManagement/data/zeitschriften.csv";
 		csvService.loadMagazineCSV(csvMagazine);
-		MagazineService magazineService  = ServiceRepository.getMagazineService();
-		assertNotNull(magazineService.getAllMagazines());
-		assertEquals(magazineService.getAllMagazines().keySet().size(), 6);
+		PublishmentService service  = ServiceRepository.getPushlishmentService();
+		assertNotNull(service.getAllPublishments());
+		assertEquals(service.getAllPublishments().keySet().size(), 6);
 	}
+	
+	
 	
 }

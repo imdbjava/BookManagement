@@ -24,6 +24,7 @@ import com.iman.bookmanagement.service.Magazine.MagazineService;
 import com.iman.bookmanagement.service.author.AuthorService;
 import com.iman.bookmanagement.service.author.AuthorServiceImpl;
 import com.iman.bookmanagement.service.book.BookService;
+import com.iman.bookmanagement.service.publishment.PublishmentService;
 
 public class CSVInitializationServiceImpl implements CSVInitializationService {
 
@@ -33,23 +34,22 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 	private AuthorService authorService;
 	private BookService bookService;
 	private MagazineService magazineService;
+	private PublishmentService publishmentService;
 	
 	public CSVInitializationServiceImpl(CsvPreference csvType) {
 		this.CSV_TYPE = csvType;
-		
-		authorService = ServiceRepository.getAuthorService();
-		magazineService = ServiceRepository.getMagazineService();
-		bookService = ServiceRepository.getBookService();
-		
+		initialize();
 	}
 	public CSVInitializationServiceImpl() {
-		authorService = ServiceRepository.getAuthorService();
-		magazineService = ServiceRepository.getMagazineService();
-		bookService = ServiceRepository.getBookService();
+		initialize();
 	}
 		
 	public void initialize() {
-		
+		authorService = ServiceRepository.getAuthorService();
+		magazineService = ServiceRepository.getMagazineService();
+		bookService = ServiceRepository.getBookService();
+		publishmentService = ServiceRepository.getPushlishmentService();
+
 	}
 
 	public void loadBookCSV(String fileName) {
@@ -69,7 +69,8 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 		    };
 			Book book = null;
 	        while ((book = csvReader.read(Book.class, header, processors)) != null) {
-	        	bookService.addBook(book);
+	        	
+	        	publishmentService.addPublishment(book);
 	        }
 			
 		} catch (FileNotFoundException e) {
@@ -132,7 +133,7 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 		    };
 			Magazine magazine = null;
 	        while ((magazine = csvReader.read(Magazine.class, header, processors)) != null) {
-	        	magazineService.addMagazine(magazine);
+	        	publishmentService.addPublishment(magazine);
 	        }
 			
 		} catch (FileNotFoundException e) {

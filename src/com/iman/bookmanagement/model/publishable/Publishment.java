@@ -1,8 +1,6 @@
 package com.iman.bookmanagement.model.publishable;
 
-import java.util.List;
 
-import com.iman.bookmanagement.model.persons.Author;
 
 /**
  * super class Publishment. At the moment we have two subclasses book and magazine.
