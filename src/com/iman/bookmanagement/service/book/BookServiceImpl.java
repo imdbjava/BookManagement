@@ -22,8 +22,8 @@ Map<String,Book> books;
 	}
 	
 	public void addBook(Book book) {
-		if(book!= null && books.containsKey(book.getIsbn())) {
-			logger.error("Book already exists");
+		if(book!= null && ! books.containsKey(book.getIsbn())) {
+			logger.error("Book already exists or the parameter was null");
 		} else {
 			books.put(book.getIsbn(), book);
 		}
@@ -31,12 +31,16 @@ Map<String,Book> books;
 	}
 
 	public Book getBook(String isbn) {
-		if(isbn!= null && isbn.trim() != "" && books.containsKey(isbn)) {
+		if(isbn!= null && isbn.trim() != "") {
+			if(books.containsKey(isbn)) {
 			return books.get(isbn);
+			} else {
+				logger.error("book not found.");
+			}
 		}else  {
-			return null;
+			logger.error("isbn parameter was null or empty");
 		}
-				
+			return null;	
 			
 	}
 

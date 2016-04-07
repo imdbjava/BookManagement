@@ -28,7 +28,6 @@ public class BookServiceTests {
 		authors.add(author);
 
 		BookService bookService = new BookServiceImpl();
-		List<Book> publishments = new ArrayList<Book>();
 		String isbn = "1-56619-909-3";
 		// TODO check ISBN validation.
 		Book book= new Book("book title",authors,isbn,"short desc");
@@ -45,7 +44,6 @@ public class BookServiceTests {
 		authors.add(author);
 
 		BookService bookService = new BookServiceImpl();
-		List<Book> publishments = new ArrayList<Book>();
 		String isbn1 = "1-56619-909-3";
 		String isbn2 = "2-56619-909-4";
 		
