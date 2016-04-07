@@ -28,10 +28,11 @@ public class IntialTest {
 			        CsvPreference.STANDARD_PREFERENCE);
 		
 			String[] header = csvReader.getHeader(true);
-			assertEquals(header[0].split(";")[0],"Emailadresse");
 			
 			assertNotNull(header);
 			assertTrue(header.length>0);
+			assertEquals(header[0].split(";")[0],"Emailadresse");
+			
 		} catch (FileNotFoundException e) {
 			fail("FileNotFound exception"+ e);
 		}
