@@ -16,8 +16,6 @@ import com.iman.bookmanagement.model.publishable.Publishment;
 import com.iman.bookmanagement.repository.ServiceRepository;
 import com.iman.bookmanagement.service.author.AuthorService;
 import com.iman.bookmanagement.service.author.AuthorServiceImpl;
-import com.iman.bookmanagement.service.book.BookService;
-import com.iman.bookmanagement.service.book.BookServiceImpl;
 import com.iman.bookmanagement.service.publishment.PublishmentService;
 
 public class PublishmentServiceTests {

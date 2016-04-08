@@ -6,9 +6,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 import com.iman.bookmanagement.repository.ServiceRepository;
-import com.iman.bookmanagement.service.Magazine.MagazineService;
 import com.iman.bookmanagement.service.author.AuthorService;
-import com.iman.bookmanagement.service.book.BookService;
 import com.iman.bookmanagement.service.initialization.csv.CSVInitializationService;
 import com.iman.bookmanagement.service.publishment.PublishmentService;
 
