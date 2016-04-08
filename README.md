@@ -1,4 +1,4 @@
 # Book Management
 
-- Fully Test Driven Development
-- Used Java, Eclipse,Maven, SuperCSV, Git, Log4j, JUnit 
+- Developmented mainly Test Driven.
+- Used Java, Eclipse,Maven, SuperCSV, Git, Log4j, JUnit.
