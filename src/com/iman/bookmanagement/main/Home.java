@@ -1,11 +1,15 @@
 package com.iman.bookmanagement.main;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
+
+import org.apache.log4j.Logger;
+import org.mozilla.universalchardet.UniversalDetector;
 
 import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Publishment;
@@ -16,8 +20,11 @@ import com.iman.bookmanagement.service.publishment.PublishmentService;
 
 public class Home {
 
+	private static Logger logger = Logger.getLogger(PublishmentService.class);
+
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		
+
 		// First we initialize the service repository
 		ServiceRepository serviceRepository = new ServiceRepository();
 		// defining files
@@ -25,7 +32,13 @@ public class Home {
 		String bookFile =  "data/buecher.csv";
 		String magazineFile =  "data/zeitschriften.csv";
 	
-		PrintStream out = new PrintStream(System.out, true, "UTF-8");
+		PrintStream out;
+		try {
+			out = new PrintStream(System.out, true, detectEncoding(authorFile));
+		} catch (IOException e) {
+			logger.error("I/O Exception, we use UTF-8 Encoding."+e);
+			out = new PrintStream(System.out, true, "UTF-8");
+		}
 		
 		// initializing services
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
@@ -72,6 +85,32 @@ public class Home {
 		}
 		
 		
+		
+	}
+	/* method to detect encoding of a file.
+	 * adapted from http://juniversalchardet.googlecode.com/svn/trunk/example/TestDetector.java
+	 * */
+	public static String detectEncoding(String fileName) throws IOException {
+        byte[] buf = new byte[4096];
+        java.io.FileInputStream fis = new java.io.FileInputStream(fileName);
+
+        UniversalDetector detector = new UniversalDetector(null);
+
+        int nread;
+        while ((nread = fis.read(buf)) > 0 && !detector.isDone()) {
+            detector.handleData(buf, 0, nread);
+        }
+        detector.dataEnd();
+
+        String encoding = detector.getDetectedCharset();
+        detector.reset();
+
+        if (encoding != null) {
+            return encoding;
+        } else {
+            return null;
+        }
+
 		
 	}
 }

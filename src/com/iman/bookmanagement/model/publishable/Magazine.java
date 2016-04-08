@@ -1,7 +1,11 @@
 package com.iman.bookmanagement.model.publishable;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +37,13 @@ public class Magazine extends Publishment {
 
 	@Override
 	public String toString() {
-		return "Magazine [Title=" + getTitle() + ",PublishDate =" + getPublishDate() + ", ISBN="
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTime(getPublishDate());
+	    String onlyDate =  Integer.toString(cal.get(Calendar.DAY_OF_MONTH))+ "."+
+	    		Integer.toString(cal.get(Calendar.MONTH))+ "." +
+	            Integer.toString(cal.get(Calendar.YEAR));
+	    
+		return "Magazine [Title=" + getTitle() + ",PublishDate =" + onlyDate + ", ISBN="
 				+ getIsbn() + ", Autors=" + getAutors() + "]";
 	}
 
@@ -41,8 +51,6 @@ public class Magazine extends Publishment {
 		return publishDate;
 	}
 
-	/**
-	 *@param publishDate is String for SuperCSV. */
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
