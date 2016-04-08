@@ -7,9 +7,12 @@ import static org.junit.Assert.fail;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.supercsv.cellprocessor.ParseDate;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -52,18 +55,22 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 			        CSV_TYPE);
 			
 			csvReader.getHeader(false);
-			String[] header = {"title", "iSBN","autors", "shortDescription"};
+			String[] header = {"title", "isbn","authorsEmail", "shortDescription"};
 		     
 			CellProcessor[] processors = new CellProcessor[] {
 		            new NotNull(), // Titel
 		            new NotNull(), // ISBN-Nummer
-		            new NotNull(), // Autoren
+		            new NotNull(), // Emails of authors
 		            new NotNull(), // Kurzbeschreibung
 		            
 		    };
 			Book book = null;
 	        while ((book = csvReader.read(Book.class, header, processors)) != null) {
-	        	
+	        	List<Author> authors = new ArrayList<Author>();
+	        	for(String email: book.getAuthorsEmail()) {
+	        		authors.add(authorService.getAuthor(email));
+	        	}
+	        	book.setAutors(authors);
 	        	publishmentService.addPublishment(book);
 	        }
 			
@@ -115,18 +122,24 @@ public class CSVInitializationServiceImpl implements CSVInitializationService {
 			
 			 csvReader.getHeader(false);
 	
-			String[] header = {"title", "iSBN","autors", "publishDate"};
+			String[] header = {"title", "isbn","authorsEmail", "publishDate"};
 
 				
 			CellProcessor[] processors = new CellProcessor[] {
 		            new NotNull(), // Titel
 		            new NotNull(), // ISBN-Nummer
 		            new NotNull(), // Autoren
-		            new NotNull(), // Datum
+		            new ParseDate("dd.MM.yyyy") // Datum
 		            
 		    };
 			Magazine magazine = null;
 	        while ((magazine = csvReader.read(Magazine.class, header, processors)) != null) {
+	        	List<Author> authors = new ArrayList<Author>();
+	        	for(String email: magazine.getAuthorsEmail()) {
+	        		authors.add(authorService.getAuthor(email));
+	        	}
+	        	magazine.setAutors(authors);
+
 	        	publishmentService.addPublishment(magazine);
 	        }
 			

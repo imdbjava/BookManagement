@@ -1,6 +1,8 @@
 package com.iman.bookmanagement.model.publishable;
 
+import java.util.List;
 
+import com.iman.bookmanagement.model.persons.Author;
 
 /**
  * super class Publishment. At the moment we have two subclasses book and magazine.
@@ -13,7 +15,7 @@ public class Publishment {
 	public Publishment() {
 		
 	}
-	public Publishment(String title, String autors, String isbn) {
+	public Publishment(String title, List<Author> autors, String isbn) {
 		this.title = title;
 		this.authors = autors;
 		this.isbn = isbn;
@@ -21,7 +23,8 @@ public class Publishment {
 
 
 	private String title;
-	private String authors;
+	private List<Author> authors;
+	
 	private String isbn;
 	
 	
@@ -35,12 +38,12 @@ public class Publishment {
 	}
 
 
-	public String getAutors() {
+	public List<Author> getAutors() {
 		return authors;
 	}
 
 
-	public void setAutors(String autors) {
+	public void setAutors(List<Author> autors) {
 		this.authors = autors;
 	}
 

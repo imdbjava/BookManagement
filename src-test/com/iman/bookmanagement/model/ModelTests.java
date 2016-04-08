@@ -31,27 +31,35 @@ public class ModelTests {
 	@Test
 	public void createPojosTest() {
 		// we need a list autors to be filled
-		List<Author> autors = new ArrayList<Author>(); 
-		Author autor = new Author("iman@java.de","Iman","Db");
-		autors.add(autor);
-		assertNotNull(autors);
-		assertEquals(autors.get(0), autor);
-		assertNotNull(autor);
-		assertEquals(autor.getEmailAddress(), "iman@java.de");
-		assertNotNull(autor.getFamilyName());
-		assertNotNull(autor.getSureName());
+		List<Author> authors = new ArrayList<Author>(); 
+		Author author = new Author("iman@java.de","Iman","Db");
+		authors.add(author);
+		assertNotNull(authors);
+		assertEquals(authors.get(0), author);
+		assertNotNull(author);
+		assertEquals(author.getEmailAddress(), "iman@java.de");
+		assertNotNull(author.getFamilyName());
+		assertNotNull(author.getSureName());
 		// we also need some books and magazines. namely publishables
 		String isbn = "1-56619-909-3";
 		// TODO check ISBN validation.
-		Book book= new Book("book title","email3@test.de",isbn,"short desc");
+		Book book= new Book("book title",authors,isbn,"short desc");
 		assertNotNull(book.getShortDescription());
 		assertNotNull(book.getIsbn());
 		assertNotNull(book.getTitle());
 		assertNotNull(book.getAutors());
 		
-		String date = "2015-10-10";
-		
-		Magazine magazine = new Magazine("magazine title","mag@test.de",isbn, date);
+		String dateString = "2015-10-10";
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY);
+		Date date = null;
+		try {
+			date = format.parse(dateString);
+		} catch (ParseException e) {
+			fail("Date format Parse Exceptoin"+ e);
+		}
+	    assertNotNull(date);
+	    
+		Magazine magazine = new Magazine("magazine title",authors,isbn, date);
 		assertNotNull(magazine.getAutors());
 		assertNotNull(magazine.getTitle());
 		assertNotNull(magazine.getIsbn());

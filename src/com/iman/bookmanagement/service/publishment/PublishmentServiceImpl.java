@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
+import com.iman.bookmanagement.model.persons.Author;
 import com.iman.bookmanagement.model.publishable.Publishment;
 
 public class PublishmentServiceImpl implements PublishmentService {
@@ -67,10 +68,10 @@ public class PublishmentServiceImpl implements PublishmentService {
 
 		
 
-	public List<Publishment> findPublishmentsByAuthor(String email) {
+	public List<Publishment> findPublishmentsByAuthor(Author author) {
 		List<Publishment> foundedPublishments = new ArrayList<Publishment>();
 		for(Entry<String,Publishment> entry :publishments.entrySet()) {
-			if(entry.getValue().getAutors().contains(email))
+			if(entry.getValue().getAutors().contains(author))
 				foundedPublishments.add(entry.getValue());
 		}
 		return foundedPublishments;

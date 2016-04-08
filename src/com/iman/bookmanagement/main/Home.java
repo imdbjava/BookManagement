@@ -50,14 +50,15 @@ public class Home {
 		out.print("\n \n search for the book with ISBN 5554-5545-4518:\n");
 		String isbn = "5554-5545-4518";
 		out.println(publishmentService.getPublishment(isbn));
-		
+		out.println();
+
 		// find publishments by author. we can search 
-		// with family name and surname
+		// with family name and surname or just family name
 		List<Author> authors = autorService.findAuthorByNameAndFamilyName("Paul", "Walter");
 		for(Author author :authors) {
 			out.println("these are the founded publications for "+ author+":");
 			out.println("\n");
-			List<Publishment> publishments = publishmentService.findPublishmentsByAuthor(author.getEmailAddress());
+			List<Publishment> publishments = publishmentService.findPublishmentsByAuthor(author);
 			for(Publishment publishment: publishments)
 			     out.println(publishment+ "\n");
 		}

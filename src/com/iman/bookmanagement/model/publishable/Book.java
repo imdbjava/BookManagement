@@ -1,5 +1,10 @@
 package com.iman.bookmanagement.model.publishable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.iman.bookmanagement.model.persons.Author;
 
 /**
  * Book Pojo
@@ -10,8 +15,11 @@ public class Book extends Publishment {
 	
 	
 	private String shortDescription;
+	
+	/* this field is only for csv mapping. */
+	private String authorsEmail;
 
-	public Book(String title, String autors, String isbn, String shortDesc) {
+	public Book(String title, List<Author> autors, String isbn, String shortDesc) {
 		super(title, autors, isbn);
 		this.setShortDescription(shortDesc);
 	}
@@ -35,22 +43,30 @@ public class Book extends Publishment {
 		return super.getTitle();
 	}
 
-	public void setISBN(String isbn) {
+	public void setIsbn(String isbn) {
 		super.setIsbn(isbn);
 	}
-	public String getISBN() {
+	public String getIsbn() {
 		return super.getIsbn();
 	}
-	public void setAutors(String authors) {
+	public void setAutors(List<Author> authors) {
 		super.setAutors(authors);
 	}
-	public String getAutors() {
+	public List<Author> getAutors() {
 		return super.getAutors();
 	}
+	
 	@Override
 	public String toString() {
-		return "Book [ShortDescription=" + getShortDescription() + ", Title=" + getTitle() + ", ISBN="
-				+ getISBN() + ", Autors=" + getAutors() + "]";
+		return "Book [Title=" + getTitle() +",ShortDescription=" + getShortDescription() +  ", ISBN="
+				+ getIsbn() + ", Autors=" + getAutors() + "]";
+	}
+	public List<String> getAuthorsEmail() {
+		
+		return  Arrays.asList(authorsEmail.split(","));
+	}
+	public void setAuthorsEmail(String authorsEmail) {
+		this.authorsEmail = authorsEmail;
 	}
 	
 	

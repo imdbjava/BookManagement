@@ -13,14 +13,9 @@ import com.iman.bookmanagement.service.publishment.PublishmentService;
 public class FunctionalTests {
 
 	@Before
-	public void intialize() {
-		ServiceRepository serviceRepository = new ServiceRepository();
-	}
-	
-	@Test
 	public void testLoadAuthorCSV() {
-		String csvFile = "data/autoren.csv";
 		ServiceRepository serviceRepository = new ServiceRepository();
+		String csvFile = "data/autoren.csv";
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
 		csvService.loadAutorCSV(csvFile);
 		AuthorService authorService  = ServiceRepository.getAuthorService();
@@ -29,9 +24,7 @@ public class FunctionalTests {
 	}
 	@Test
 	public void testLoadBookCSV() {
-		ServiceRepository serviceRepository = new ServiceRepository();
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
-
 		String csvBook = "data/buecher.csv";
 		csvService.loadBookCSV(csvBook);
 		PublishmentService service  = ServiceRepository.getPushlishmentService();
@@ -41,9 +34,7 @@ public class FunctionalTests {
 	
 	@Test
 	public void testLoadMagazineCSV() {
-		ServiceRepository serviceRepository = new ServiceRepository();
 		CSVInitializationService csvService = ServiceRepository.getCsvInitializationService();
-
 		String csvMagazine = "data/zeitschriften.csv";
 		csvService.loadMagazineCSV(csvMagazine);
 		PublishmentService service  = ServiceRepository.getPushlishmentService();

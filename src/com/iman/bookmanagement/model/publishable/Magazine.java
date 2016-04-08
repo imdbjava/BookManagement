@@ -1,6 +1,14 @@
 package com.iman.bookmanagement.model.publishable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.iman.bookmanagement.model.persons.Author;
+import com.iman.bookmanagement.service.author.AuthorServiceImpl;
 
 /**
  * Magazine Pojo
@@ -9,27 +17,33 @@ import java.util.Date;
  */
 public class Magazine extends Publishment {
 
+	private static Logger logger = Logger.getLogger(AuthorServiceImpl.class);
+
+	// for SuperCSV
 	public Magazine() {
 		
 	}
-	private String publishDate;
+	private Date publishDate;
+	private String authorsEmail;
 
-	public Magazine(String title, String autors, String isbn, String publishDate) {
+	public Magazine(String title, List<Author> autors, String isbn, Date publishDate) {
 		super(title, autors, isbn);
 		this.setPublishDate(publishDate);
 	}
 
 	@Override
 	public String toString() {
-		return "Magazine [PublishDate=" + getPublishDate() + ", Title=" + getTitle() + ", ISBN="
-				+ getISBN() + ", Autors=" + getAutors() + "]";
+		return "Magazine [Title=" + getTitle() + ",PublishDate =" + getPublishDate() + ", ISBN="
+				+ getIsbn() + ", Autors=" + getAutors() + "]";
 	}
 
-	public String getPublishDate() {
+	public Date getPublishDate() {
 		return publishDate;
 	}
 
-	public void setPublishDate(String publishDate) {
+	/**
+	 *@param publishDate is String for SuperCSV. */
+	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
 	public void  setTitle(String title) {
@@ -40,19 +54,26 @@ public class Magazine extends Publishment {
 		return super.getTitle();
 	}
 
-	public void setISBN(String isbn) {
+	public void setIsbn(String isbn) {
 		super.setIsbn(isbn);
 	}
-	public String getISBN() {
+	public String getIsbn() {
 		return super.getIsbn();
 	}
-	public void setAutors(String authors) {
+	public void setAutors(List<Author> authors) {
 		super.setAutors(authors);
 	}
-	public String getAutors() {
+	public List<Author> getAutors() {
 		return super.getAutors();
 	}
-	
+
+	public List<String> getAuthorsEmail() {
+		
+		return Arrays.asList(authorsEmail.split(","));
+	}
+	public void setAuthorsEmail(String authorsEmail) {
+		this.authorsEmail = authorsEmail;
+	}
 
 
 }

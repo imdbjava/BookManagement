@@ -44,7 +44,11 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [emailAddress=" + emailAddress + ", sureName=" + sureName + ", familyName=" + familyName + "]";
+		return sureName + " " + familyName;
+	}
+	
+	public String authorDetails() {
+		return "Author ["+sureName + " " + familyName + ", Email = ]"+ emailAddress;
 	}
 
 	
